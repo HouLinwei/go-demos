@@ -9,7 +9,7 @@ const (
 	delete
 )
 
-func main()  {
+func main() {
 	fmt.Print(read)
 	fmt.Print(write)
 	fmt.Print(delete)
