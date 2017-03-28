@@ -26,3 +26,4 @@ _testmain.go
 bin/
 pkg/
 .idea/
+src/github.com/
