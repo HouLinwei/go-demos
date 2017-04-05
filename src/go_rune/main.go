@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main()  {
 	s := "123abc!!!你好！"
+	fmt.Println("==========")
 	for _, v := range s{
 		fmt.Printf("%c \t",v)
 	}
