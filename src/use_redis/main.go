@@ -62,24 +62,25 @@ type Person struct {
 
 func (p Person)MarshalBinary()([]byte, error){
 	return json.Marshal(p)
+
+	// gzip compress
 	//data, _:= json.Marshal(p)
+
 	//var buf bytes.Buffer
 	//gzipWriter := gzip.NewWriter(&buf)
-	//
-	//idx, err := gzipWriter.Write(data)
+	//_, err := gzipWriter.Write(data)
 	//if err != nil {
 	//	log.Fatal(err)
 	//}
-	//fmt.Println(idx)
 	//
 	//if err := gzipWriter.Close(); err != nil {
 	//	log.Fatal(err)
 	//}
 	//return buf.Bytes(), nil
-	//return []byte(fmt.Sprintf("%s%d",p.Name,p.Age)), nil
 }
 
 func (p Person)UnmarshalBinary(data []byte)error{
+	// fixme when to use it？
 	fmt.Println(data)
 	p.Name = "res"
 	p.Age =  11
