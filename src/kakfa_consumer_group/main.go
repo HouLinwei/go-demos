@@ -26,13 +26,11 @@ func main()  {
 	var zookeeperNodes []string
 	zookeeperNodes, config.Zookeeper.Chroot = kazoo.ParseConnectionString(zkAddrStr)
 	fmt.Println(zookeeperNodes)
-	fmt.Println("xxx")
 	fmt.Println(config.Zookeeper.Chroot)
 
 
 	consumer, consumerErr := consumergroup.JoinConsumerGroup(gg, []string{topic,}, zookeeperNodes, config)
 	if consumerErr != nil {
-		fmt.Println("xxx", consumerErr)
 		log.Fatalln(consumerErr)
 	}
 
