@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"strings"
 	"use_gin/api"
 )
@@ -16,12 +16,12 @@ func main() {
 	serv.Run(":8888")
 }
 
-func index (c *gin.Context)  {
+func index(c *gin.Context) {
 	fmt.Println(c.HandlerName())
 	c.JSON(1, "ok")
 }
 
-func midWare()gin.HandlerFunc{
+func midWare() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		fmt.Println(c.HandlerName())
 		handlerPath := strings.Split(c.HandlerName(), "/")

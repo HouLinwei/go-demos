@@ -4,24 +4,24 @@ import (
 	"fmt"
 )
 
-func doWithCatchException(i int)  {
+func doWithCatchException(i int) {
 	defer func() {
-		if err := recover(); err != nil{
+		if err := recover(); err != nil {
 			fmt.Println("error: ", i)
 			fmt.Println(err)
 		}
 	}()
 	var s string
-	if i%2 == 0{
+	if i%2 == 0 {
 		s = ""
-	}else {
+	} else {
 		s = "123"
 	}
-	s = s[0:len(s)-1]
+	s = s[0 : len(s)-1]
 }
 
-func main()  {
-	for i:=0;i<10;i++{
+func main() {
+	for i := 0; i < 10; i++ {
 		doWithCatchException(i)
 	}
 }

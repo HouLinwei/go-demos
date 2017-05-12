@@ -1,14 +1,14 @@
 package main
 
 import (
-	"github.com/rcrowley/go-metrics"
 	"fmt"
-	"time"
+	"github.com/rcrowley/go-metrics"
 	"log"
 	"os"
+	"time"
 )
 
-func main()  {
+func main() {
 	c := metrics.NewCounter()
 	metrics.Register("counter", c)
 	c.Inc(100)
@@ -25,6 +25,6 @@ func main()  {
 	//	return cache.get
 	//})
 
-	go metrics.Log(metrics.DefaultRegistry, 5 * time.Second, log.New(os.Stderr, "metrics: ", log.Lmicroseconds))
-	time.Sleep(100*time.Second)
+	go metrics.Log(metrics.DefaultRegistry, 5*time.Second, log.New(os.Stderr, "metrics: ", log.Lmicroseconds))
+	time.Sleep(100 * time.Second)
 }

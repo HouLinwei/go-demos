@@ -1,17 +1,17 @@
 package main
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 type Human struct {
-	Name string
-	Birth time.Time
+	Name   string
+	Birth  time.Time
 	Gender string
 }
 
-func (h Human)String()string{
+func (h Human) String() string {
 	var res string
 	res += fmt.Sprintf("Name:\t%s\n", h.Name)
 	res += fmt.Sprintf("Gender:\t%s\n", h.Gender)
@@ -19,7 +19,7 @@ func (h Human)String()string{
 	return res
 }
 
-func main()  {
+func main() {
 	h := &Human{"Adam", time.Now(), "unkown"}
 	fmt.Println(h)
 }

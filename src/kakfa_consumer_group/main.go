@@ -1,21 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"github.com/Shopify/sarama"
-	"log"
-	"os"
 	"github.com/wvanbergen/kafka/consumergroup"
 	"github.com/wvanbergen/kazoo-go"
-	"time"
-	"fmt"
+	"log"
+	"os"
 	"os/signal"
+	"time"
 )
 
 func init() {
 	sarama.Logger = log.New(os.Stdout, "[Sarama] ", log.LstdFlags)
 }
 
-func main()  {
+func main() {
 	zkAddrStr := "localhost:2181"
 	gg := "h-test-x1"
 	topic := "test2"
@@ -28,12 +28,10 @@ func main()  {
 	fmt.Println(zookeeperNodes)
 	fmt.Println(config.Zookeeper.Chroot)
 
-
-	consumer, consumerErr := consumergroup.JoinConsumerGroup(gg, []string{topic,}, zookeeperNodes, config)
+	consumer, consumerErr := consumergroup.JoinConsumerGroup(gg, []string{topic}, zookeeperNodes, config)
 	if consumerErr != nil {
 		log.Fatalln(consumerErr)
 	}
-
 
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
@@ -49,7 +47,6 @@ func main()  {
 			log.Println(err)
 		}
 	}()
-
 
 	eventCount := 0
 	offsets := make(map[string]map[int32]int64)

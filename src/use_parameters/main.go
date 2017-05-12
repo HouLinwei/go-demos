@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-func Print(){
+func Print() {
 
 }
 
-func main()  {
+func main() {
 	vids := []string{"1", "2"}
 	fmt.Println(vids...)
 }
