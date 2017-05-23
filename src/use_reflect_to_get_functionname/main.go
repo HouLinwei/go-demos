@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"runtime"
+	"time"
 )
 
 func getFuncName() string {
@@ -11,11 +12,14 @@ func getFuncName() string {
 	return desc.Name()
 }
 
+func count(start int64){
+	time.Sleep(1*time.Second)
+	now := time.Now().UnixNano()
+	fmt.Println(float64(now-start)/1e9)
+}
+
 func wrapper() {
-	defer func() {
-		name := getFuncName()
-		fmt.Println(name)
-	}()
+	defer count(time.Now().UnixNano())
 }
 
 func main() {
