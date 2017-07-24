@@ -29,5 +29,6 @@ pkg/
 src/github.com/
 src/golang.org/
 src/gopkg.in/
+src/git.apache.org/
 src/tmp/
 projectFilesBackup/
