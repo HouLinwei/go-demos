@@ -8,13 +8,13 @@ import (
 
 func main()  {
 	//raw := []int{0,1,2,3,4,5,6,7,8,9,10}
-	shuffered := shuffer(10,19)
-	fmt.Println(shuffered)
+	shufflered := shuffler(10,19)
+	fmt.Println(shufflered)
 }
 
 
 
-func shuffer(n, needcount int )[]int{
+func shuffler(n, needcount int )[]int{
 	//
 	r := []int{}
 	for i := 0 ; i< n ; i++{
