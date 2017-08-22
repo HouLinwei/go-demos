@@ -1,0 +1,12 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "OV1A2lpS4gOUXty/JUUWufrQQTo=",
+			"path": "pretty_print",
+			"revision": ""
+		}
+	],
+	"rootPath": "use_govendor"
+}
