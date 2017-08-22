@@ -10,6 +10,8 @@ import (
 func main() {
 	num := 2
 	c := make(chan os.Signal, 1)
+
+	// os.Kill cannot be caught.
 	signal.Notify(c, os.Interrupt)
 
 	in := make(chan int, num)
@@ -23,12 +25,14 @@ func main() {
 			go func() {
 				<-in
 				fmt.Println("I have to terminate myself.")
-				if idx == 1 {
-					// 这样也会导致失效。
-				} else {
-					out <- idx
-					flag = true
-				}
+				//if idx == 1 {
+				//	// 这样也会导致失效。
+				//} else {
+				//	out <- idx
+				//	flag = true
+				//}
+				out <- idx
+				flag = true
 			}()
 
 			for !flag {
