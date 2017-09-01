@@ -17,3 +17,14 @@ func TestAdd(t *testing.T) {
 func TestConcurrentMap(t *testing.T) {
 	ConcurrentMap()
 }
+
+func TestXTime(t *testing.T) {
+	XTime()
+}
+
+func BenchmarkAdd(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		fmt.Sprintf("hello")
+		Add(1,2)
+	}
+}
