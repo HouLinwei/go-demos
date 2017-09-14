@@ -1,9 +1,14 @@
 package use_interface
 
+import "fmt"
+
 type Worker interface {
-	GetInfo()string
+	GetInfo() string
 }
 
-func (w *Worker)GetInfo()string{
-	return ""
+type MyWorker struct {
+}
+
+func (w *MyWorker) GetInfo() string {
+	return fmt.Sprintf("[Info]:%x", w)
 }
