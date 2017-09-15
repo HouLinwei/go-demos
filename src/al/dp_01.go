@@ -1,5 +1,0 @@
-package al
-
-func DP(){
-
-}
