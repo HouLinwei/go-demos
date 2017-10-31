@@ -13,7 +13,7 @@ type MyError struct {
 
 func (e MyError) Error() string {
 	e.When = time.Now()
-	return fmt.Sprintf("At: %s, Code:%d, Msg:%s.", e.When, e.Code, e.Msg)
+	return fmt.Sprintf("At: %s, Code: %d, Msg: %s.", e.When, e.Code, e.Msg)
 }
 
 func Cause(c int, s string) error {
