@@ -7,8 +7,8 @@ import (
 	"github.com/wvanbergen/kazoo-go"
 	"log"
 	"os"
-	"time"
 	"os/signal"
+	"time"
 )
 
 func init() {
@@ -28,13 +28,12 @@ func main() {
 	var zookeeperNodes []string
 	zookeeperNodes, config.Zookeeper.Chroot = kazoo.ParseConnectionString(zkAddrStr)
 
-
 	fmt.Println(zookeeperNodes)
 	fmt.Println(config.Zookeeper.Chroot)
 
 	cgs := []*consumergroup.ConsumerGroup{}
 
-	for i:= 0 ;i< cgNum; i++{
+	for i := 0; i < cgNum; i++ {
 		consumer, consumerErr := consumergroup.JoinConsumerGroup(groupName, []string{topic}, zookeeperNodes, config)
 		if consumerErr != nil {
 			log.Fatalln(consumerErr)
@@ -45,12 +44,10 @@ func main() {
 	fmt.Println(len(cgs))
 	fmt.Println(cgs)
 
-
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 
-
-	for i:=0; i<cgNum; i++{
+	for i := 0; i < cgNum; i++ {
 		consumer := cgs[i]
 		go func(consumer *consumergroup.ConsumerGroup) {
 
@@ -95,13 +92,11 @@ func main() {
 		}(consumer)
 	}
 
-
-	<- c
+	<-c
 
 	fmt.Println("EEEEEEEEEEE")
 
 }
-
 
 //type S struct {
 //

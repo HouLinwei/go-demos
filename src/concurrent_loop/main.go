@@ -7,43 +7,43 @@ import (
 
 type P struct {
 	Name string
-	Age int
+	Age  int
 }
 
-func main()  {
+func main() {
 	var ps []*P
 
 	// init
 	ps = append(ps, &P{
-		Name:"Hou",
-		Age:10,
+		Name: "Hou",
+		Age:  10,
 	})
 	ps = append(ps, &P{
-		Name:"Hou",
-		Age:10,
+		Name: "Hou",
+		Age:  10,
 	})
 	ps = append(ps, &P{
-		Name:"Hou",
-		Age:10,
+		Name: "Hou",
+		Age:  10,
 	})
 	ps = append(ps, &P{
-		Name:"Hou",
-		Age:10,
+		Name: "Hou",
+		Age:  10,
 	})
 	ps = append(ps, &P{
-		Name:"Hou",
-		Age:10,
+		Name: "Hou",
+		Age:  10,
 	})
 
 	finishedChan := make(chan int, len(ps))
-	for idx, v := range ps{
+	for idx, v := range ps {
 		go process(idx, v, finishedChan)
 	}
-	for i:= 0; i<len(ps); i++{
+	for i := 0; i < len(ps); i++ {
 		<-finishedChan
 	}
 
-	for _, v := range ps{
+	for _, v := range ps {
 		fmt.Println(v)
 	}
 
@@ -54,7 +54,7 @@ func main()  {
 	fmt.Println(len(s))
 }
 
-func process(idx int, p *P, signal chan int){
+func process(idx int, p *P, signal chan int) {
 	p.Name = fmt.Sprintf("%s%d", p.Name, idx)
 	p.Age += idx
 	signal <- idx

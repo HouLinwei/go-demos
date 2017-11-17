@@ -1,11 +1,11 @@
 package main
 
 import (
-	"sync"
 	"fmt"
+	"sync"
 )
 
-func main()  {
+func main() {
 	var once sync.Once
 	onceBody := func() {
 		fmt.Println("Only once")

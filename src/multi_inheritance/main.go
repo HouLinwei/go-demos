@@ -10,25 +10,24 @@ type B struct {
 	A
 }
 
-func (b B) F(){
+func (b B) F() {
 	fmt.Println("F() of B")
 }
 
-type C struct{
+type C struct {
 	A
 }
 
-func (c C) F(){
+func (c C) F() {
 	fmt.Println("F() of C")
 }
-
 
 type D struct {
 	B
 	C
 }
 
-func main(){
+func main() {
 	d := D{}
 
 	// Error! "ambiguous selector d.F".
@@ -40,4 +39,3 @@ func main(){
 	d.B.A = d.C
 	d.B.A.F()
 }
-

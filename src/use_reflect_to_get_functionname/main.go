@@ -12,10 +12,10 @@ func getFuncName() string {
 	return desc.Name()
 }
 
-func count(start int64){
-	time.Sleep(1*time.Second)
+func count(start int64) {
+	time.Sleep(1 * time.Second)
 	now := time.Now().UnixNano()
-	fmt.Println(float64(now-start)/1e9)
+	fmt.Println(float64(now-start) / 1e9)
 }
 
 func wrapper() {

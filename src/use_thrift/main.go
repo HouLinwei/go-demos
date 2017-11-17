@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"time"
-	"sync/atomic"
 	"gopkg.in/redis.v4"
+	"sync/atomic"
+	"time"
 )
 
 const (
@@ -12,13 +12,12 @@ const (
 	port = 8991
 )
 
-func main()  {
+func main() {
 	fmt.Println("=========")
 
 	date := time.Now().Format("2006-01-02-15")
 
 	fmt.Println(date)
-
 
 	fmt.Println("=========")
 	var myAtomic atomic.Value
@@ -32,7 +31,7 @@ func main()  {
 	z("b")
 
 	fmt.Println("=========")
-	now := time.Now().Add(-time.Hour*24)
+	now := time.Now().Add(-time.Hour * 24)
 	r := fmt.Sprintf("%d-%d-%d", now.Year(), now.Month(), now.Day())
 	fmt.Println(r)
 
@@ -43,7 +42,7 @@ func main()  {
 		DB:       0,  // use default DB
 	})
 	k := "xxxx"
-	keys,_ := client.HKeys(k).Result()
+	keys, _ := client.HKeys(k).Result()
 	//client.HSet(k, "v11","1")
 	//client.HSet(k, "v12","1")
 	//client.HSet(k, "v13","1")
@@ -52,7 +51,6 @@ func main()  {
 	res := client.HDel(k, keys...)
 	fmt.Println(res)
 
-
 	pong, err := client.Ping().Result()
 	if err != nil {
 		fmt.Println(err)
@@ -60,11 +58,10 @@ func main()  {
 	fmt.Println(pong)
 }
 
-
-func f1(s string){
+func f1(s string) {
 	fmt.Println("f1")
 }
 
-func f2(s string){
+func f2(s string) {
 	fmt.Println("f2")
 }

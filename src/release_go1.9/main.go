@@ -1,17 +1,17 @@
 package release_go1_9
 
 import (
-	"sync"
 	"fmt"
+	"sync"
 	"time"
 )
 
 func Add(x, y int) (z int) {
-	z = x+y
+	z = x + y
 	return
 }
 
-func ConcurrentMap(){
+func ConcurrentMap() {
 	m := sync.Map{}
 	m.Store("1", "2")
 	m.Store("2", "2")
@@ -26,22 +26,22 @@ func ConcurrentMap(){
 
 }
 
-func XTime(){
+func XTime() {
 	t := time.Now()
 	println(t.String())
 	println("======")
 
-	nt := t.Add(time.Hour*1)
+	nt := t.Add(time.Hour * 1)
 	println(t.String())
 	println(nt.String())
 	println("======")
 
-	n2t := t.AddDate(1,1,1)
+	n2t := t.AddDate(1, 1, 1)
 	println(t.String())
 	println(n2t.String())
 	println("======")
 
-	n3t := t.Round(time.Hour*1)
+	n3t := t.Round(time.Hour * 1)
 	println(t.String())
 	println(n3t.String())
 	println("======")

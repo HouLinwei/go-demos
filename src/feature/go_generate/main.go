@@ -1,8 +1,7 @@
 package go_generate
 
-import "os"
+import "context"
 
-func Add()  {
-	os.O_RDONLY
-	copy()
+func Add() {
+	context.Background()
 }

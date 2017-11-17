@@ -1,27 +1,27 @@
 package main
 
 import (
-	"gopkg.in/mgo.v2"
 	"fmt"
+	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"time"
 )
 
 const (
-	MongoHost = "10.98.16.210"
-	MongoPort = 37017
-	MongoDB = "test_cygx1_comment_filter"
+	MongoHost       = "10.98.16.210"
+	MongoPort       = 37017
+	MongoDB         = "test_cygx1_comment_filter"
 	MongoCollection = "sensitive_words"
 )
 
-func main()  {
+func main() {
 	id := "5948dc16df9ea6474ef50146"
 	addrs := fmt.Sprintf("%s:%d", MongoHost, MongoPort)
 	dialInfo := mgo.DialInfo{
-		Addrs: []string{addrs},
+		Addrs:    []string{addrs},
 		Database: MongoDB,
 	}
-	session ,err  := mgo.DialWithInfo(&dialInfo)
+	session, err := mgo.DialWithInfo(&dialInfo)
 	defer session.Close()
 	if err != nil {
 		fmt.Println(err.Error())
@@ -31,7 +31,7 @@ func main()  {
 	collection := db.C(MongoCollection)
 
 	s := bson.M{
-		"_id":bson.ObjectIdHex(id),
+		"_id": bson.ObjectIdHex(id),
 	}
 	//u := bson.M{
 	//	"status":"100",

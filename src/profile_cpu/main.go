@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"os"
-	"runtime/pprof"
-	"runtime"
 	"os/signal"
+	"runtime"
+	"runtime/pprof"
+	"time"
 )
 
-func main()  {
+func main() {
 
 	runtime.MemProfileRate = 1
 	fileName := "/tmp/cpuprofile.p"
@@ -23,23 +23,22 @@ func main()  {
 	go func() {
 		fmt.Println(" ===== test profile cpu ===== ")
 		i := 10
-		for{
-			i ++
+		for {
+			i++
 			fmt.Println(fab(i))
-			time.Sleep(time.Second*1)
+			time.Sleep(time.Second * 1)
 		}
 	}()
-
 
 	terminate := make(chan os.Signal)
 	signal.Notify(terminate, os.Interrupt)
 	<-terminate
 }
 
-func fab(x int) int{
-	if x == 1 || x == 2{
+func fab(x int) int {
+	if x == 1 || x == 2 {
 		return x
-	}else{
-		return fab(x-1)+ fab(x-2)
+	} else {
+		return fab(x-1) + fab(x-2)
 	}
 }

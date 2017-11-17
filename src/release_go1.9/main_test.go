@@ -1,11 +1,11 @@
 package release_go1_9
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
-func help(t *testing.T){
+func help(t *testing.T) {
 	t.Helper()
 	fmt.Println("put help info here")
 }
@@ -25,6 +25,6 @@ func TestXTime(t *testing.T) {
 func BenchmarkAdd(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		fmt.Sprintf("hello")
-		Add(1,2)
+		Add(1, 2)
 	}
 }

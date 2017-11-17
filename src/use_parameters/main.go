@@ -12,9 +12,8 @@ func main() {
 	tmpMap := make(map[string]string)
 	tmpMap["a"] = "av"
 	tmpMap["b"] = "bv"
-	fmt.Println(len(tmpMap)==2)
-	for k, v := range tmpMap{
-		fmt.Println(k,v)
+	fmt.Println(len(tmpMap) == 2)
+	for k, v := range tmpMap {
+		fmt.Println(k, v)
 	}
 }
-
