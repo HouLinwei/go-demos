@@ -26,7 +26,8 @@ func RunPipeLine() {
 	out := Do(done, in)
 	go func() {
 		time.Sleep(time.Second * 5)
-		done <- 1
+		//done <- 1
+		close(done)
 	}()
 	for n := range out {
 		fmt.Println("Out: ", n)
@@ -40,6 +41,7 @@ func Do(done <-chan int, in <-chan int) <-chan int {
 	var wg sync.WaitGroup
 	wg.Add(1)
 	go func() {
+		defer wg.Done()
 		for n := range in {
 			select {
 			// 搞清楚这儿的语义
@@ -47,7 +49,7 @@ func Do(done <-chan int, in <-chan int) <-chan int {
 				fmt.Println("Recv: ", n)
 			case t := <-done:
 				fmt.Println("DONE", t)
-				wg.Done()
+				return
 			}
 		}
 	}()
