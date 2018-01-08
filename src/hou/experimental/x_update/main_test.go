@@ -1,10 +1,10 @@
 package x_update
 
 import (
-	"testing"
-	"fmt"
 	"encoding/json"
+	"fmt"
 	"os"
+	"testing"
 )
 
 func TestRun(t *testing.T) {
@@ -14,14 +14,14 @@ func TestRun(t *testing.T) {
 
 func BenchmarkRunWithLock(b *testing.B) {
 	b.N = 100
-	for i:=0; i< b.N;i++{
+	for i := 0; i < b.N; i++ {
 		RunWithLock()
 	}
 }
 
 func BenchmarkRunWithoutLock(b *testing.B) {
 	b.N = 100
-	for i:=0; i< b.N;i++{
+	for i := 0; i < b.N; i++ {
 		RunWithoutLock()
 	}
 }
@@ -32,7 +32,7 @@ func TestA(t *testing.T) {
 	}
 	type omit bool
 	var a A
-	json.Unmarshal([]byte(`{"age":"100"}`),&a)
+	json.Unmarshal([]byte(`{"age":"100"}`), &a)
 	fmt.Println(a.Age)
 
 	//json.Marshal(struct {
@@ -48,12 +48,12 @@ func TestA(t *testing.T) {
 	json.NewEncoder(os.Stdout).Encode(
 		struct {
 			*A
-			XAge  bool `json:"age,omitempty"`
-			Age int `json:"new_age"`
+			XAge bool `json:"age,omitempty"`
+			Age  int  `json:"new_age"`
 		}{
-		     A:&a,
+			A: &a,
 			//Age: a.Age,
-			Age:a.Age,
+			Age: a.Age,
 		})
 
 }

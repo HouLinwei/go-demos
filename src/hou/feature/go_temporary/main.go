@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func Main(){
+func Main() {
 	in := make(chan int, 1)
 	in <- 100
 	fmt.Println(<-in)
@@ -14,8 +14,8 @@ func Main(){
 	withP("1")
 }
 
-func withP(v... string){
-	for _, t := range v{
+func withP(v ...string) {
+	for _, t := range v {
 		fmt.Println(t)
 	}
 }

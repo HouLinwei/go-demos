@@ -1,35 +1,34 @@
 package x_update
 
 import (
-	"sync"
 	"fmt"
+	"sync"
 	"time"
 )
 
 var t int
 
 type MyVar struct {
-	l sync.RWMutex
+	l    sync.RWMutex
 	Data int
 }
 
 type MyVar2 struct {
-	l sync.RWMutex
+	l    sync.RWMutex
 	Data map[string]string
 }
 
-
-func Run()  {
+func Run() {
 	go func() {
-		ticker := time.NewTicker(time.Second*1)
+		ticker := time.NewTicker(time.Second * 1)
 		defer ticker.Stop()
-		for t := range ticker.C{
+		for t := range ticker.C {
 			fmt.Println(t)
 		}
 	}()
 	m := make(map[string]string)
 	m = map[string]string{
-		"1":"1",
+		"1": "1",
 	}
 	fmt.Println(m)
 	UpdateM(m)
@@ -40,35 +39,34 @@ func Run()  {
 	fmt.Println("End")
 }
 
-func UpdateM(m map[string]string){
+func UpdateM(m map[string]string) {
 	m["2"] = "2"
 }
 
-
-func RunWithLock(){
+func RunWithLock() {
 	v := MyVar{
-		Data:1,
+		Data: 1,
 	}
-	for i:= 0 ; i<100000; i ++ {
+	for i := 0; i < 100000; i++ {
 		printVWithLock(v)
 	}
 }
 
-func printVWithLock(v MyVar){
+func printVWithLock(v MyVar) {
 	v.l.RLock()
 	defer v.l.RUnlock()
 	fmt.Println(v.Data)
 }
 
-func RunWithoutLock(){
+func RunWithoutLock() {
 	v := MyVar{
-		Data:1,
+		Data: 1,
 	}
-	for i:= 0 ; i<100000; i ++ {
+	for i := 0; i < 100000; i++ {
 		printVWithoutLock(v)
 	}
 }
 
-func printVWithoutLock(v MyVar){
+func printVWithoutLock(v MyVar) {
 	fmt.Println(v.Data)
 }

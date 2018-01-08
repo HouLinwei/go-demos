@@ -2,6 +2,6 @@ package pretty_print
 
 import "fmt"
 
-func Greeting(){
+func Greeting() {
 	fmt.Println("Tada!")
 }

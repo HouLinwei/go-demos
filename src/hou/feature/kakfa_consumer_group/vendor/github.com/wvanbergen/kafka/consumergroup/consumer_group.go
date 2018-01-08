@@ -149,7 +149,6 @@ func JoinConsumerGroup(name string, topics []string, zookeeper []string, config 
 		stopper:  make(chan struct{}),
 	}
 
-
 	fmt.Println("HHHH cg", *cg)
 	fmt.Println("HHHH cg", *cg.group)
 	fmt.Println("HHHH cg", *cg.instance)
@@ -265,10 +264,9 @@ func (cg *ConsumerGroup) topicListConsumer(topics []string) {
 
 		consumers, consumerChanges, err := cg.group.WatchInstances()
 
-
 		fmt.Println("HHHH", consumers)
-		for i , v := range consumers{
-			fmt.Println("   ", i , " ---> ", v.ID, v)
+		for i, v := range consumers {
+			fmt.Println("   ", i, " ---> ", v.ID, v)
 		}
 		fmt.Println("HHHH", consumerChanges)
 
@@ -327,8 +325,8 @@ func (cg *ConsumerGroup) topicConsumer(topic string, messages chan<- *sarama.Con
 	partitions, err := cg.kazoo.Topic(topic).Partitions()
 
 	fmt.Println("HHHH", partitions)
-	for i, v := range partitions{
-		fmt.Println("   ", i ,  " ---> ", v.ID, v.Replicas, )
+	for i, v := range partitions {
+		fmt.Println("   ", i, " ---> ", v.ID, v.Replicas)
 	}
 
 	if err != nil {
@@ -344,7 +342,6 @@ func (cg *ConsumerGroup) topicConsumer(topic string, messages chan<- *sarama.Con
 	partitionLeaders, err := retrievePartitionLeaders(partitions)
 
 	fmt.Println("HHHH", partitionLeaders)
-
 
 	if err != nil {
 		cg.Logf("%s :: FAILED to get leaders of partitions: %s\n", topic, err)
