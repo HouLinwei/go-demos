@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"strings"
-	"use_gin/api"
+	"tips/use_gine_gin/api"
 )
 
 func main() {

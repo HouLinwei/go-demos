@@ -31,6 +31,8 @@ src/github.com/
 src/golang.org/
 src/gopkg.in/
 src/git.apache.org/
+src/stathat.com/
 src/tmp/
-src/experimental/
 projectFilesBackup/
+src/experimental/concurrent/
+src/experimental/go-distrubutw-workflow/

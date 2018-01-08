@@ -48,7 +48,7 @@ func TestA(t *testing.T) {
 	json.NewEncoder(os.Stdout).Encode(
 		struct {
 			*A
-			OmitAge  bool `json:"age,omitempty"`
+			XAge  bool `json:"age,omitempty"`
 			Age int `json:"new_age"`
 		}{
 		     A:&a,
