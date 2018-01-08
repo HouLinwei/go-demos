@@ -32,4 +32,5 @@ src/golang.org/
 src/gopkg.in/
 src/git.apache.org/
 src/tmp/
+src/experimental/
 projectFilesBackup/
