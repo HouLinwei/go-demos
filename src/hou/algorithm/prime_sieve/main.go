@@ -16,7 +16,7 @@ func main() {
 			in <- i
 		}
 	}(ch1)
-	for i := 0; i < 2; i++ {
+	for i := 0; i < 10; i++ {
 		prime := <-ch1
 		fmt.Println(prime)
 		ch2 := make(chan int)
